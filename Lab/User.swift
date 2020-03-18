@@ -13,25 +13,48 @@ class User: CKModel {
     
     var record: CKRecord
 
-    @CKField(key: "photo")
-    var _photo: CKAsset?
+//    @CKField(key: "photo")
+//    var _photo: CKAsset?
+    
+    @CKField(key: "name")
+    var name: String?
     
     @CKImage(key: "photo")
     var image: UIImage?
+    
+    @CKField(key: "photo")
+    var image2: UIImage?
+    
+//    var photo: UIImage? {
+//        get {
+//            if let photo = loadedPhoto {
+//                return photo
+//            } else {
+//                let photo = _photo?.image
+//                self.loadedPhoto = photo
+//                return photo
+//            }
+//        }
+//        set {
+//            guard let image = newValue, let url = image.url else { return }
+//            _photo = CKAsset(fileURL: url)
+//            loadedPhoto = image
+//        }
+//    }
     
     var photo: UIImage? {
         get {
             if let photo = loadedPhoto {
                 return photo
             } else {
-                let photo = _photo?.image
+                let photo = (record["photo"] as? CKAsset)?.image
                 self.loadedPhoto = photo
                 return photo
             }
         }
         set {
             guard let image = newValue, let url = image.url else { return }
-            _photo = CKAsset(fileURL: url)
+            record["photo"] = CKAsset(fileURL: url)
             loadedPhoto = image
         }
     }

@@ -7,11 +7,14 @@
 //
 
 import CloudKit
+import UIKit
 
 @propertyWrapper
-struct CKField<Value> {
+class CKField<Value> {
     
     private let key: String
+    
+    private var cached: UIImage?
 
     public init(key: String) {
         self.key = key
@@ -27,14 +30,31 @@ struct CKField<Value> {
     
     public static subscript<T: CKModel>(_enclosingInstance instance: T, wrapped wrappedKeyPath: W<T>, storage storageKeyPath: S<T>) -> Value {
         get {
-            let key = instance[keyPath: storageKeyPath].key
+            let _self = instance[keyPath: storageKeyPath]
+            let key = _self.key
             let record = instance.record
-            return record[key] as! Value
+            if let image = _self.cached {
+                return image as! Value
+            } else {
+                if let asset = record[key] as? CKAsset {
+                    let image = asset.image
+                    instance[keyPath: storageKeyPath].cached = image
+                    return image as! Value
+                } else {
+                    return record[key] as! Value
+                }
+            }
         }
         set {
-            let key = instance[keyPath: storageKeyPath].key
+            let _self = instance[keyPath: storageKeyPath]
+            let key = _self.key
             let record = instance.record
-            record[key] = newValue as? CKRecordValue
+            if let image = newValue as? UIImage, let url = image.url {
+                _self.cached = image
+                record[key] = CKAsset(fileURL: url)
+            } else {
+                record[key] = newValue as? CKRecordValue
+            }
         }
     }
     

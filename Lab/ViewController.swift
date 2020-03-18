@@ -20,11 +20,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        user.record["photo"] = CKAsset(fileURL: image.url!)
+//        user.record["name"] = "Mateus Rodrigues"
+//        user.record["photo"] = CKAsset(fileURL: image.url!)
         
-        print(UIImage.self.description())
-    
-        imageView.image = user.image
+        user.name = "Mateus Rodrigues"
+        user.image2 = image
+        
+        imageView.image = user.image2
 //
 //
 //        let start1 = CFAbsoluteTimeGetCurrent()

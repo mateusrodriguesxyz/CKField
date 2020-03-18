@@ -32,18 +32,18 @@ class LabTests: XCTestCase {
         }
     }
     
-    func testCKField() {
-        measure {
-            for _ in 0...1000 {
-                _ = user._photo!.image!
-            }
-        }
-    }
-    
     func testLoaded() {
         measure {
             for _ in 0...1000 {
                 _ = user.photo
+            }
+        }
+    }
+    
+    func testCKField() {
+        measure {
+            for _ in 0...1000 {
+                _ = user.image2
             }
         }
     }
@@ -56,4 +56,12 @@ class LabTests: XCTestCase {
         }
     }
 
+    //    func testCKField() {
+    //        measure {
+    //            for _ in 0...1000 {
+    //                _ = user._photo!.image!
+    //            }
+    //        }
+    //    }
+    
 }
