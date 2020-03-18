@@ -12,12 +12,22 @@ import UIKit
 @propertyWrapper
 class CKField<Value> {
     
-    private let key: String
+    typealias Getter = (CKRecordValue) -> Value
+    typealias Setter = (Value) -> CKRecordValue
+    
+    typealias W<Root> = ReferenceWritableKeyPath<Root, Value>
+    typealias S<Root> = ReferenceWritableKeyPath<Root, CKField>
+    
+    private var key: String
+    private var get: Getter?
+    private var set: Setter?
     
     private var cached: UIImage?
 
-    public init(key: String) {
+    public init(key: String, get: Getter? = nil, set: Setter? = nil) {
         self.key = key
+        self.get = get
+        self.set = set
     }
 
     var wrappedValue: Value {
@@ -25,14 +35,18 @@ class CKField<Value> {
         set { fatalError() }
     }
     
-    typealias W<Root> = ReferenceWritableKeyPath<Root, Value>
-    typealias S<Root> = ReferenceWritableKeyPath<Root, CKField>
-    
     public static subscript<T: CKModel>(_enclosingInstance instance: T, wrapped wrappedKeyPath: W<T>, storage storageKeyPath: S<T>) -> Value {
         get {
+            
             let _self = instance[keyPath: storageKeyPath]
             let key = _self.key
             let record = instance.record
+            
+            if let get = _self.get {
+                let value = record[key]!
+                return get(value)
+            }
+            
             if let image = _self.cached {
                 return image as! Value
             } else {
@@ -46,15 +60,22 @@ class CKField<Value> {
             }
         }
         set {
+            
             let _self = instance[keyPath: storageKeyPath]
             let key = _self.key
             let record = instance.record
-            if let image = newValue as? UIImage, let url = image.url {
+            
+            if let set = _self.set {
+                let value = set(newValue)
+                print(value)
+                record[key] = value
+            } else if let image = newValue as? UIImage, let url = image.url {
                 _self.cached = image
                 record[key] = CKAsset(fileURL: url)
             } else {
                 record[key] = newValue as? CKRecordValue
             }
+            
         }
     }
     
