@@ -22,7 +22,7 @@ class CKField<Value> {
     private var get: Getter?
     private var set: Setter?
     
-    private var cached: UIImage?
+    private var cached: Value?
 
     public init(key: String, get: Getter? = nil, set: Setter? = nil) {
         self.key = key
@@ -39,40 +39,38 @@ class CKField<Value> {
         get {
             
             let _self = instance[keyPath: storageKeyPath]
+            
             let key = _self.key
             let record = instance.record
             
-            if let get = _self.get {
-                let value = record[key]!
-                return get(value)
-            }
-            
-            if let image = _self.cached {
-                return image as! Value
-            } else {
-                if let asset = record[key] as? CKAsset {
-                    let image = asset.image
-                    instance[keyPath: storageKeyPath].cached = image
-                    return image as! Value
+            switch _self.cached {
+            case .none:
+                if let get = _self.get {
+                    let value = get(record[key]!)
+                    _self.cached = value
+                    return value
                 } else {
-                    return record[key] as! Value
+                    let value = record[key] as! Value
+                    _self.cached = value
+                    return value
                 }
+            case .some(let value):
+                return value
             }
+    
         }
         set {
             
             let _self = instance[keyPath: storageKeyPath]
+            
             let key = _self.key
             let record = instance.record
             
             if let set = _self.set {
-                let value = set(newValue)
-                print(value)
-                record[key] = value
-            } else if let image = newValue as? UIImage, let url = image.url {
-                _self.cached = image
-                record[key] = CKAsset(fileURL: url)
+                _self.cached = newValue
+                record[key] = set(newValue)
             } else {
+                _self.cached = newValue
                 record[key] = newValue as? CKRecordValue
             }
             

@@ -26,6 +26,19 @@ extension Role {
 
 }
 
+extension UIImage {
+    
+    convenience init?(_ value: CKRecordValue) {
+        guard let asset = value as? CKAsset, let data = asset.data else { return nil }
+        self.init(data: data)
+    }
+    
+    var asset: CKAsset {
+        return CKAsset(fileURL: self.url!)
+    }
+    
+}
+
 class User: CKModel {
     
     var record: CKRecord
@@ -33,7 +46,7 @@ class User: CKModel {
     @CKField(key: "name")
     var name: String?
 
-    @CKField(key: "photo")
+    @CKField(key: "photo", get: { UIImage($0) }, set: { $0!.asset })
     var image: UIImage?
     
     @CKField(key: "role", get: { Role($0) }, set: { $0.value })

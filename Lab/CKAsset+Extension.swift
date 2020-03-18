@@ -10,9 +10,14 @@ import UIKit
 import CloudKit
 
 extension CKAsset {
-    var image: UIImage? {
+    
+    var data: Data? {
         guard let url = self.fileURL else { return nil }
-        guard let data = FileManager.default.contents(atPath: url.path) else { return nil }
+        return FileManager.default.contents(atPath: url.path)
+    }
+    
+    var image: UIImage? {
+        guard let data = self.data else { return nil }
         return UIImage(data: data)
     }
 }

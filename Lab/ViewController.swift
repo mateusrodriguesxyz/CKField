@@ -20,13 +20,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        user.record["name"] = "Mateus Rodrigues"
+        user.record["name"] = nil
         user.record["photo"] = CKAsset(fileURL: image.url!)
         user.record["role"] = "teacher"
         
+        
         imageView.image = user.image
         
+        print(user.name)
+        print(user.photo)
         print(user.role)
+        
 //        
 //        let a = user.record["name"]
 //        

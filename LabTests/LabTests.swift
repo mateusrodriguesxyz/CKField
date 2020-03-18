@@ -41,7 +41,7 @@ class LabTests: XCTestCase {
     }
     
     
-    func testCKImage() {
+    func testCKField() {
         measure {
             for _ in 0...1000 {
                 _ = user.image
