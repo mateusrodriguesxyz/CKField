@@ -8,7 +8,7 @@
 
 import CloudKit
 
-protocol CKModel {
+public protocol CKModel {
     var record: CKRecord { get }
 }
 
