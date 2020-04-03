@@ -14,7 +14,7 @@ class User: CKModel {
     var record: CKRecord
     
     @CKField(key: "name")
-    var name: String?
+    var name: String
 
     @CKField(key: "photo")
     var image: UIImage?

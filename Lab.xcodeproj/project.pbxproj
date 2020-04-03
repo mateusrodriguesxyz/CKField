@@ -75,9 +75,9 @@
 		DC162B2E243780E6009894EE /* Wrapper */ = {
 			isa = PBXGroup;
 			children = (
+				DC33966824213FBC00E4BD3C /* CKModel.swift */,
 				DC33966224213F8600E4BD3C /* CKField.swift */,
 				DC162B2C243776C6009894EE /* CKFieldProtocol.swift */,
-				DC33966824213FBC00E4BD3C /* CKModel.swift */,
 			);
 			path = Wrapper;
 			sourceTree = "<group>";

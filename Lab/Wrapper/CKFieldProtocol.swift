@@ -19,7 +19,7 @@ extension Optional: CKFieldProtocol where Wrapped: CKFieldProtocol {
         return Wrapped.get(value)
     }
     public static func set(_ value: Optional<Wrapped>?) -> CKRecordValue? {
-        return Wrapped.set(value ?? nil)
+        return Wrapped.set(value!)
     }
 }
 
