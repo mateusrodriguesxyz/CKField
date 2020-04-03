@@ -28,7 +28,6 @@ class ViewController: UIViewController {
         imageView.image = user.image
         
         print(user.name)
-        print(user.photo)
         print(user.role)
         
 //        

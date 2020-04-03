@@ -6,6 +6,7 @@
 //  Copyright © 2020 Mateus Rodrigues. All rights reserved.
 //
 
+import UIKit
 import CloudKit
 
 public protocol CKModel {

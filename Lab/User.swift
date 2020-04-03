@@ -14,27 +14,26 @@ enum Role: String {
     case teacher
 }
 
-extension Role {
-
-    init(_ value: CKRecordValue) {
-        self = Role(rawValue: value as! String)!
+extension Role: CKFieldProtocol {
+    static func get(_ value: CKRecordValue?) -> Role? {
+        return Role(rawValue: value as! String)
     }
-
-    var value: CKRecordValue {
-        return self.rawValue as CKRecordValue
+    
+    static func set(_ value: Role?) -> CKRecordValue? {
+        return value?.rawValue as CKRecordValue?
     }
-
 }
 
-extension UIImage {
+extension UIImage: CKFieldProtocol {
     
-    convenience init?(_ value: CKRecordValue) {
+    public static func get(_ value: CKRecordValue?) -> Self? {
         guard let asset = value as? CKAsset, let data = asset.data else { return nil }
-        self.init(data: data)
+        return UIImage(data: data) as? Self
     }
     
-    var asset: CKAsset {
-        return CKAsset(fileURL: self.url!)
+    public static func set(_ value: UIImage?) -> CKRecordValue? {
+        guard let url = value?.url else { return nil }
+        return CKAsset(fileURL: url)
     }
     
 }
@@ -46,30 +45,11 @@ class User: CKModel {
     @CKField(key: "name")
     var name: String?
 
-    @CKField(key: "photo", get: { UIImage($0) }, set: { $0!.asset })
+    @CKField(key: "photo")
     var image: UIImage?
     
-    @CKField(key: "role", get: { Role($0) }, set: { $0.value })
+    @CKField(key: "role")
     var role: Role
-        
-    var photo: UIImage? {
-        get {
-            if let photo = loadedPhoto {
-                return photo
-            } else {
-                let photo = (record["photo"] as? CKAsset)?.image
-                self.loadedPhoto = photo
-                return photo
-            }
-        }
-        set {
-            guard let image = newValue, let url = image.url else { return }
-            record["photo"] = CKAsset(fileURL: url)
-            loadedPhoto = image
-        }
-    }
-    
-    var loadedPhoto: UIImage?
     
     init(record: CKRecord) {
         self.record = record
