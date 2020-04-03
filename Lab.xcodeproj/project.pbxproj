@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		DC162B2D243776C6009894EE /* CKFieldProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC162B2C243776C6009894EE /* CKFieldProtocol.swift */; };
+		DC162B2F2437815B009894EE /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC33966624213FAD00E4BD3C /* UIImage+Extension.swift */; };
+		DC162B31243781E2009894EE /* Role+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC162B30243781E2009894EE /* Role+Extension.swift */; };
+		DC162B3324378234009894EE /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC162B3224378234009894EE /* Role.swift */; };
 		DC33964124213F6700E4BD3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC33964024213F6700E4BD3C /* AppDelegate.swift */; };
 		DC33964324213F6700E4BD3C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC33964224213F6700E4BD3C /* SceneDelegate.swift */; };
 		DC33964524213F6700E4BD3C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC33964424213F6700E4BD3C /* ViewController.swift */; };
@@ -16,8 +19,6 @@
 		DC33964D24213F6B00E4BD3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC33964B24213F6B00E4BD3C /* LaunchScreen.storyboard */; };
 		DC33965824213F6B00E4BD3C /* LabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC33965724213F6B00E4BD3C /* LabTests.swift */; };
 		DC33966324213F8600E4BD3C /* CKField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC33966224213F8600E4BD3C /* CKField.swift */; };
-		DC33966524213F9300E4BD3C /* CKAsset+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC33966424213F9300E4BD3C /* CKAsset+Extension.swift */; };
-		DC33966724213FAD00E4BD3C /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC33966624213FAD00E4BD3C /* UIImage+Extension.swift */; };
 		DC33966924213FBC00E4BD3C /* CKModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC33966824213FBC00E4BD3C /* CKModel.swift */; };
 		DC33966B242140C000E4BD3C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC33966A242140C000E4BD3C /* User.swift */; };
 /* End PBXBuildFile section */
@@ -34,6 +35,8 @@
 
 /* Begin PBXFileReference section */
 		DC162B2C243776C6009894EE /* CKFieldProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKFieldProtocol.swift; sourceTree = "<group>"; };
+		DC162B30243781E2009894EE /* Role+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Role+Extension.swift"; sourceTree = "<group>"; };
+		DC162B3224378234009894EE /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
 		DC33963D24213F6700E4BD3C /* Lab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC33964024213F6700E4BD3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC33964224213F6700E4BD3C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,7 +49,6 @@
 		DC33965724213F6B00E4BD3C /* LabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabTests.swift; sourceTree = "<group>"; };
 		DC33965924213F6B00E4BD3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC33966224213F8600E4BD3C /* CKField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKField.swift; sourceTree = "<group>"; };
-		DC33966424213F9300E4BD3C /* CKAsset+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKAsset+Extension.swift"; sourceTree = "<group>"; };
 		DC33966624213FAD00E4BD3C /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		DC33966824213FBC00E4BD3C /* CKModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKModel.swift; sourceTree = "<group>"; };
 		DC33966A242140C000E4BD3C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -70,6 +72,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC162B2E243780E6009894EE /* Wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				DC33966224213F8600E4BD3C /* CKField.swift */,
+				DC162B2C243776C6009894EE /* CKFieldProtocol.swift */,
+				DC33966824213FBC00E4BD3C /* CKModel.swift */,
+			);
+			path = Wrapper;
+			sourceTree = "<group>";
+		};
 		DC33963424213F6700E4BD3C = {
 			isa = PBXGroup;
 			children = (
@@ -95,11 +107,10 @@
 				DC33964224213F6700E4BD3C /* SceneDelegate.swift */,
 				DC33964424213F6700E4BD3C /* ViewController.swift */,
 				DC33966A242140C000E4BD3C /* User.swift */,
-				DC33966824213FBC00E4BD3C /* CKModel.swift */,
-				DC33966224213F8600E4BD3C /* CKField.swift */,
-				DC162B2C243776C6009894EE /* CKFieldProtocol.swift */,
-				DC33966424213F9300E4BD3C /* CKAsset+Extension.swift */,
+				DC162B3224378234009894EE /* Role.swift */,
+				DC162B2E243780E6009894EE /* Wrapper */,
 				DC33966624213FAD00E4BD3C /* UIImage+Extension.swift */,
+				DC162B30243781E2009894EE /* Role+Extension.swift */,
 				DC33964624213F6700E4BD3C /* Main.storyboard */,
 				DC33964924213F6B00E4BD3C /* Assets.xcassets */,
 				DC33964B24213F6B00E4BD3C /* LaunchScreen.storyboard */,
@@ -220,13 +231,14 @@
 			files = (
 				DC33964524213F6700E4BD3C /* ViewController.swift in Sources */,
 				DC33964124213F6700E4BD3C /* AppDelegate.swift in Sources */,
-				DC33966524213F9300E4BD3C /* CKAsset+Extension.swift in Sources */,
-				DC33966724213FAD00E4BD3C /* UIImage+Extension.swift in Sources */,
+				DC162B31243781E2009894EE /* Role+Extension.swift in Sources */,
+				DC162B2F2437815B009894EE /* UIImage+Extension.swift in Sources */,
 				DC33966B242140C000E4BD3C /* User.swift in Sources */,
 				DC33966324213F8600E4BD3C /* CKField.swift in Sources */,
 				DC33964324213F6700E4BD3C /* SceneDelegate.swift in Sources */,
 				DC162B2D243776C6009894EE /* CKFieldProtocol.swift in Sources */,
 				DC33966924213FBC00E4BD3C /* CKModel.swift in Sources */,
+				DC162B3324378234009894EE /* Role.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

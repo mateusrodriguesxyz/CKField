@@ -7,21 +7,29 @@
 //
 
 import UIKit
+import CloudKit
 
-extension UIImage {
+extension UIImage: CKFieldProtocol {
     
-    var data: Data? {
-        return self.pngData()
+    public static func get(_ value: CKRecordValue?) -> Self? {
+        guard let asset = value as? CKAsset, let url = asset.fileURL else { return nil }
+        guard let data = FileManager.default.contents(atPath: url.path) else { return nil }
+        return UIImage(data: data) as? Self
+    }
+    
+    public static func set(_ value: UIImage?) -> CKRecordValue? {
+        guard let url = value?.url else { return nil }
+        return CKAsset(fileURL: url)
     }
     
     var url: URL? {
         let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(UUID().uuidString)
-        guard self.write(to: url) else { return  nil }
+        guard self.write(to: url) else { return nil }
         return url
     }
     
     func write(to url: URL) -> Bool {
-        guard let data = self.data else { return false }
+        guard let data = self.pngData() else { return false }
         do {
             try data.write(to: url)
             return true
