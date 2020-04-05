@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DC162B2D243776C6009894EE /* CKFieldProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC162B2C243776C6009894EE /* CKFieldProtocol.swift */; };
+		DC162B2D243776C6009894EE /* CKFieldValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC162B2C243776C6009894EE /* CKFieldValue.swift */; };
 		DC162B2F2437815B009894EE /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC33966624213FAD00E4BD3C /* UIImage+Extension.swift */; };
 		DC162B31243781E2009894EE /* Role+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC162B30243781E2009894EE /* Role+Extension.swift */; };
 		DC162B3324378234009894EE /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC162B3224378234009894EE /* Role.swift */; };
@@ -34,7 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DC162B2C243776C6009894EE /* CKFieldProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKFieldProtocol.swift; sourceTree = "<group>"; };
+		DC162B2C243776C6009894EE /* CKFieldValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKFieldValue.swift; sourceTree = "<group>"; };
 		DC162B30243781E2009894EE /* Role+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Role+Extension.swift"; sourceTree = "<group>"; };
 		DC162B3224378234009894EE /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
 		DC33963D24213F6700E4BD3C /* Lab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lab.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,7 +77,7 @@
 			children = (
 				DC33966824213FBC00E4BD3C /* CKModel.swift */,
 				DC33966224213F8600E4BD3C /* CKField.swift */,
-				DC162B2C243776C6009894EE /* CKFieldProtocol.swift */,
+				DC162B2C243776C6009894EE /* CKFieldValue.swift */,
 			);
 			path = Wrapper;
 			sourceTree = "<group>";
@@ -236,7 +236,7 @@
 				DC33966B242140C000E4BD3C /* User.swift in Sources */,
 				DC33966324213F8600E4BD3C /* CKField.swift in Sources */,
 				DC33964324213F6700E4BD3C /* SceneDelegate.swift in Sources */,
-				DC162B2D243776C6009894EE /* CKFieldProtocol.swift in Sources */,
+				DC162B2D243776C6009894EE /* CKFieldValue.swift in Sources */,
 				DC33966924213FBC00E4BD3C /* CKModel.swift in Sources */,
 				DC162B3324378234009894EE /* Role.swift in Sources */,
 			);

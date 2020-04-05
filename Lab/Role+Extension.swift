@@ -9,7 +9,7 @@
 import Foundation
 import CloudKit
 
-extension Role: CKFieldProtocol {
+extension Role: CKFieldValue {
     static func get(_ value: CKRecordValue?) -> Role? {
         return Role(rawValue: value as! String)
     }

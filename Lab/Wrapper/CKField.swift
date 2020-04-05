@@ -9,7 +9,7 @@
 import CloudKit
 
 @propertyWrapper
-public struct CKField<Value: CKFieldProtocol> {
+public struct CKField<Value: CKFieldValue> {
     
     public typealias W<Root> = ReferenceWritableKeyPath<Root, Value>
     public typealias S<Root> = ReferenceWritableKeyPath<Root, CKField>

@@ -9,21 +9,21 @@
 import Foundation
 import CloudKit
 
-public protocol CKFieldProtocol {
+public protocol CKFieldValue {
     static func get(_ value: CKRecordValue?) -> Self?
     static func set(_ value: Self?) -> CKRecordValue?
 }
 
-extension Optional: CKFieldProtocol where Wrapped: CKFieldProtocol {
-    public static func get(_ value: CKRecordValue?) -> Optional<Wrapped>? {
+extension Optional: CKFieldValue where Wrapped: CKFieldValue {
+    public static func get(_ value: CKRecordValue?) -> Self? {
         return Wrapped.get(value)
     }
-    public static func set(_ value: Optional<Wrapped>?) -> CKRecordValue? {
+    public static func set(_ value: Self?) -> CKRecordValue? {
         return Wrapped.set(value!)
     }
 }
 
-extension CKFieldProtocol where Self: CKRecordValueProtocol {
+extension CKFieldValue where Self: CKRecordValueProtocol {
     public static func get(_ value: CKRecordValue?) -> Self? {
         return value as? Self
     }
@@ -32,9 +32,9 @@ extension CKFieldProtocol where Self: CKRecordValueProtocol {
     }
 }
 
-extension String: CKFieldProtocol {}
-extension Date: CKFieldProtocol {}
-extension Data: CKFieldProtocol {}
-extension Bool: CKFieldProtocol {}
-extension Int: CKFieldProtocol {}
-extension Double: CKFieldProtocol {}
+extension String: CKFieldValue {}
+extension Date: CKFieldValue {}
+extension Data: CKFieldValue {}
+extension Bool: CKFieldValue {}
+extension Int: CKFieldValue {}
+extension Double: CKFieldValue {}

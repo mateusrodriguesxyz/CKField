@@ -27,7 +27,7 @@ extension UIImage {
     }
 }
 
-extension UIImage: CKFieldProtocol {
+extension UIImage: CKFieldValue {
     
     public static func get(_ value: CKRecordValue?) -> Self? {
         guard
